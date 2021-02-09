@@ -1,0 +1,21 @@
+kind: pipeline
+type: docker
+name: production
+
+trigger:
+  branch:
+    - master
+  event:
+    - push
+
+steps:
+  - name: docker-production
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: registry_username
+      password:
+        from_secret: registry_password
+      repo: registry.jesseobrien.dev/jesseobrien.dev
+      registry: registry.jesseobrien.dev
+      tags: latest
