@@ -6,7 +6,7 @@ install:
 .PHONY: build
 build:
 	statik -f src=public
-	go build -o dist/jesseobrien main.go
+	go build -ldflags="-s -w" -o ./dist/jesseobrien main.go
 
 .PHONY: run
 run:

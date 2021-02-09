@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"text/template"
@@ -31,7 +32,19 @@ func main() {
 
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(statikFS)))
 
-	tmpl, err := template.ParseFiles("index.html")
+	r, err := statikFS.Open("/index.html")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer r.Close()
+
+	indexTmpl, err := ioutil.ReadAll(r)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	tmpl, err := template.New("index").Parse(string(indexTmpl))
 	if err != nil {
 		log.Fatal(err)
 	}
