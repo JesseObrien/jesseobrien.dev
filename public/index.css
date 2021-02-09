@@ -1,0 +1,20 @@
+.text-link {
+    color: #C4C3B0;
+}
+
+.text-link:visited {
+    color: #C4C3B0;
+}
+
+.text-link:hover {
+    color: #606260;
+}
+
+.text-strong {
+    color: #C4C3B0;
+    font-weight: 500;
+}
+
+img {
+    border: 5px solid #C4C3B0;
+}

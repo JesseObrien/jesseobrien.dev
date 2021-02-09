@@ -1,0 +1,7 @@
+[build]
+cmd = "statik -f src=public && go build -o ./dist/jesseobrien main.go"
+
+bin = "./dist/jesseobrien"
+
+include_ext = ["css","go","html"]
+exclude_dir = ["dist", "statik"]
